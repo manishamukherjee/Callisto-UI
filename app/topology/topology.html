@@ -9,17 +9,17 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/lib/next-ui/css/next.css">
-  <link rel="stylesheet" href="topology.css">
+  <link rel="stylesheet" href="../../lib/next-ui/css/next.css">
+  <link rel="stylesheet" href="../topology/topology.css">
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="../app.css">
   <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
- 
-<button onClick="addNewLink()">Add new link</button>
-<button onClick="insetNodeSet()">insetNodeSet</button>
+	<li><a href="http://localhost:8000/app/view1/view1.html">Underlay</a></li>
+    <li><a href="http://localhost:8000/app/view2/view2.html">Overlay</a></li>
+    <li><a href="http://localhost:8000/app/topology/topology.html">Topology</a></li>
 
 
   <!-- In production use:
@@ -27,10 +27,11 @@
   -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
-  <script type="application/javascript" src="/lib/next-ui/js/next.js"></script>
+  <script type="application/javascript" src="../../lib/next-ui/js/next.js"></script>
   <script src="../app.js"></script>
   <script src="../view1/view1.js"></script>
   <script src="../view2/view2.js"></script>
+  <script src="../topology/topology.js"></script>
   <script src="../components/version/version.js"></script>
   <script src="../components/version/version-directive.js"></script>
   <script src="../components/version/interpolate-filter.js"></script>
