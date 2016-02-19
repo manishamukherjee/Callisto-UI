@@ -26,17 +26,47 @@
 						'showIcon': true,
 						'nodeConfig': {
 							'label': 'model.name',
+							'Status':'model.status',
+							'IP':'model.IP',
+							
 							
 							
 							/*
 							 icon types:
 							 https://developer.cisco.com/media/neXt-site/example.html#Basic/icons
 							 */
-							'iconType': 'router',
+							'iconType':function(vertex) {
+					            var id = vertex.get("id");
+					  
+					            if (id <1) {
+					                return 'cloud'
+					            } 
+					            else{
+					            	return 'router'
+					            }
+					        },
+					    
+						
 							'color': '#0how00'
 						},
 						'linkConfig': {
-							'linkType': 'curve' // also: parallel
+							'linkType': 'curve', // also: parallel
+							color: function(link, model) {
+					        	var col=link.get("status");  
+					        	var col2=link.get("Property");  
+					        		
+					        	if(String (col).match("Up")){ 
+					        		
+					        		return nx.path("green");}
+					        	if(String (col).match("Down")){
+					        		
+					        		return nx.path("red");}  
+					            
+					          },
+					          sourcelabel: 'model.srcTrafficMap.Default.EMPTYQUEUE',
+				              targetlabel: 'model.tgtTrafficMap.Default.EMPTYQUEUE'
+				            
+				    
 						},
 						tooltipManagerConfig: {
 							nodeTooltipContentClass: 'TooltipNode',

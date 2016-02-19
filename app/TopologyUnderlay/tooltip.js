@@ -16,7 +16,7 @@
 						content: '{#node.label}'
 					},
 					{
-						tag: 'h2',
+						tag: 'h4',
 						content: '{#node.IP}'
 					},
 					{

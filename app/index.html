@@ -16,9 +16,9 @@
 </head>
 <body>
   <ul class="menu">
-    <li><a href="http://localhost:8000/app/view1/view1.html">Underlay</a></li>
-    <li><a href="http://localhost:8000/app/view2/view2.html">Overlay</a></li>
-    <li><a href="http://localhost:8000/app/topology/topology.html">Topology</a></li>
+    <li><a href="http://localhost:8000/app/ListUnderlay/view1.html">Underlay</a></li>
+    <li><a href="http://localhost:8000/app/ListOverlay/view2.html">Overlay</a></li>
+    <li><a href="http://localhost:8000/app/TopologyUnderlay/topology.html">Topology</a></li>
   </ul>
 
   <!--[if lt IE 7]>
@@ -36,8 +36,8 @@
   <tr>
     <th>Number</th>
   	<th>Intf Name</th>
-    <th>Bandwidth</th>
     <th>Status</th>
+    <th>IP</th>
     </tr>
     <tr ng-repeat="x in names">    
     <td>{{ $index + 1 }} </td>
@@ -56,8 +56,8 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <script src="ListUnderlay/view1.js"></script>
+  <script src="ListOverlay/view2.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

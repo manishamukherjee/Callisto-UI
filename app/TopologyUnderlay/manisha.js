@@ -77,11 +77,11 @@ var topo = new nx.graphic.Topology({
         label: 'model.name',
         iconType:function(vertex) {
             var id = vertex.get("id");
-            if (id <5) {
-                return 'router'
+            if (id ==1) {
+                return 'cloud'
             } 
             else{
-            	return 'cloud'
+            	return 'router'
             }
         }
     },
@@ -92,6 +92,7 @@ var topo = new nx.graphic.Topology({
         linkType: 'parallel',
         color: function(link, model) {
         	var col=link.get("status");  
+        	var col2=link.get("Property");  
         		
         	if(String (col).match("Up")){ 
         		
@@ -101,6 +102,7 @@ var topo = new nx.graphic.Topology({
         		return nx.path("red");}  
             
           },
+    		
                 sourcelabel: 'model.srcTrafficMap.Default.EMPTYQUEUE',
                 targetlabel: 'model.tgtTrafficMap.Default.EMPTYQUEUE'
     },
@@ -187,7 +189,8 @@ var topologyData = {
         "source": 5,
         
         "target": 3,
-        "status": "Down",        
+        "status": "Down",
+        "Property": "Internal",
         "Bandwidth":50,
         "srcTrafficMap": {
             "Default": {
@@ -204,7 +207,8 @@ var topologyData = {
         "id": 1,
         "source": 4,
         "target": 3,
-        "status": "Up",        
+        "status": "Up", 
+        "Property": "Internal",
         "Bandwidth":50,
         "srcTrafficMap": {
             "Default": {
@@ -224,6 +228,7 @@ var topologyData = {
         "target": 4,
         "status": "Up",        
         "Bandwidth":50,
+        "Property": "Internal",
         "srcTrafficMap": {
             "Default": {
                 "EMPTYQUEUE": "TenGigE0/0/0/2"
@@ -241,6 +246,7 @@ var topologyData = {
         "target": 0,
         "status": "Down",        
         "Bandwidth":50,
+        "Property": "Internal",
         "srcTrafficMap": {
             "Default": {
                 "EMPTYQUEUE": "TenGigE0/0/0/4"
@@ -275,6 +281,7 @@ var topologyData = {
         "target": 3,
         "status": "Down",        
         "Bandwidth":50,
+        "Property": "Internal",
         "srcTrafficMap": {
             "Default": {
                 "EMPTYQUEUE": "TenGigE0/0/0/13"
@@ -290,8 +297,9 @@ var topologyData = {
         "id": 6,
         "source": 1,
         "target": 2,
-        "status": "Down",        
+        "status": "Up",        
         "Bandwidth":50,
+        "Property": "External",
         "srcTrafficMap": {
             "Default": {
                 "EMPTYQUEUE": "TenGigE0/0/0/14"
