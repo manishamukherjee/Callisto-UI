@@ -16,6 +16,10 @@
 						content: '{#node.label}'
 					},
 					{
+						tag: 'h2',
+						content: '{#node.IP}'
+					},
+					{
 						tag: 'div',
 						content: 'New node name:'
 					},

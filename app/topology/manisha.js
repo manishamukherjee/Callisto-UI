@@ -1,3 +1,126 @@
+nx.define('MyExtendLink', nx.graphic.Topology.Link, {
+    properties: {
+        sourcelabel: null,
+        targetlabel: null
+    },
+    view: function(view) {
+        view.content.push({
+            name: 'source',
+            type: 'nx.graphic.Text',
+            props: {
+                'class': 'sourcelabel',
+                'alignment-baseline': 'text-after-edge',
+                'text-anchor': 'start'
+            }
+        }, 
+        
+        
+        
+        
+        {
+            name: 'target',
+            type: 'nx.graphic.Text',
+            props: {
+                'class': 'targetlabel',
+                'alignment-baseline': 'text-after-edge',
+                'text-anchor': 'end'
+            }
+        });
+        
+        return view;
+    },
+    methods: {
+        update: function() {
+            
+            this.inherited();
+            
+            
+            var el, point;
+            
+            var line = this.line();
+            var angle = line.angle();
+            var stageScale = this.stageScale();
+            
+            // pad line
+            line = line.pad(18 * stageScale, 18 * stageScale);
+            
+            if (this.sourcelabel()) {
+                el = this.view('source');
+                point = line.start;
+                el.set('x', point.x);
+                el.set('y', point.y);
+                el.set('text', this.sourcelabel());
+                el.set('transform', 'rotate(' + angle + ' ' + point.x + ',' + point.y + ')');
+                el.setStyle('font-size', 12 * stageScale);
+            }
+            
+            
+            if (this.targetlabel()) {
+                el = this.view('target');
+                point = line.end;
+                el.set('x', point.x);
+                el.set('y', point.y);
+                el.set('text', this.targetlabel());
+                el.set('transform', 'rotate(' + angle + ' ' + point.x + ',' + point.y + ')');
+                el.setStyle('font-size', 12 * stageScale);
+            }
+        }
+    }
+});
+
+
+
+
+var topo = new nx.graphic.Topology({
+    adaptive: true,
+    nodeConfig: {
+        label: 'model.name',
+        iconType:function(vertex) {
+            var id = vertex.get("id");
+            if (id <5) {
+                return 'router'
+            } 
+            else{
+            	return 'cloud'
+            }
+        }
+    },
+    nodeSetConfig: {
+        label: 'model.name'
+    },
+    linkConfig: {
+        linkType: 'parallel',
+        color: function(link, model) {
+        	var col=link.get("status");  
+        		
+        	if(String (col).match("Up")){ 
+        		
+        		return nx.path("green");}
+        	if(String (col).match("Down")){
+        		
+        		return nx.path("red");}  
+            
+          },
+                sourcelabel: 'model.srcTrafficMap.Default.EMPTYQUEUE',
+                targetlabel: 'model.tgtTrafficMap.Default.EMPTYQUEUE'
+    },
+    showIcon: true,
+    linkInstanceClass: 'MyExtendLink' // set the link class
+});
+
+
+
+topo.on('ready', function () {
+    topo.data(topologyData);
+});
+
+topo.on('clickNode',function(topo,node){
+	alert("Add to Overlay?");
+})
+//app
+var app = new nx.ui.Application();
+topo.attach(app);
+
 var topologyData = {
     "nodes": [{
         "id": 0,
@@ -182,4 +305,4 @@ var topologyData = {
         
     }],
     "nodeSet": []
-};
+}

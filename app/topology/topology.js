@@ -1,5 +1,6 @@
 // See README.md to understand why we use TopologyContainer (class that inherits nx.ui.Component) instead of
 // nx.graphic.Topology
+
 (function (nx) {
 	nx.define('TopologyContainer', nx.ui.Component, {
 		// we use this trick to use this object as a nx.ui.Component and display topology at the same time
@@ -10,6 +11,7 @@
 				}
 			}
 		},
+		
 		// define view
 		view: {
 			content: [
@@ -24,6 +26,8 @@
 						'showIcon': true,
 						'nodeConfig': {
 							'label': 'model.name',
+							
+							
 							/*
 							 icon types:
 							 https://developer.cisco.com/media/neXt-site/example.html#Basic/icons
