@@ -25,10 +25,33 @@ config(['$routeProvider', function($routeProvider) {
 }]);
 */
 
-
+var obj;
 
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
     $http.get("http://localhost:8000/underlay.php")
-    .then(function (response) {$scope.names = response.data.records;});
+    .then(function (response) {$scope.names = response.data.nodes;obj=response;});
 });
+
+function addToOverlay() {
+	
+	var values = new Array();
+
+	$.each($("input[name='case[]']:checked").closest("td").siblings("td"),
+	       function () {
+	            values.push($(this).text());
+	       });
+	   var str=values;
+	   var objAraay=new JSON.parse(obj);
+	   console.log(objArray);
+	   
+	 
+	   
+	   obj.id = str[0] ;
+	   obj.name = str[1] ;
+	   obj.status = str[2] ;
+	   obj.IP = str[3] ;
+	   obj.x=0;
+	   obj.y=0;
+	  
+}

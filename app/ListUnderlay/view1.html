@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="../app.css">
   <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+   <script type="text/javascript" src="../TopologyUnderlay/jquery-2.1.4.min.js"></script>
+  
 </head>
 <body>
   <ul class="menu">
@@ -34,21 +36,33 @@
   
  <div ng-app="myApp" ng-controller="customersCtrl"> 
 
-<table>
+<table id="dataTable">
   <tr>
     <th>Number</th>
+    
   	<th>Intf Name</th>
-    <th>Bandwidth</th>
+    <th>IP</th>
     <th>Status</th>
+    <th>Add to overlay</th>
+    
     </tr>
-    <tr ng-repeat="x in names">    
-    <td>{{ $index + 1 }} </td>
+    <tr ng-repeat="x in names" id="tr1">  
+      
+    <td>{{ x.id }} </td>
+    
     <td>{{ x.name }}</td>
     <td>{{ x.IP }}</td>
     <td>{{ x.status }}</td>
+    <td align="center"><input type="checkbox" class="case" name="case[]" value="1" /></td>
   </tr>
 </table>
 
+
+</div>
+&nbsp; 
+<div>
+   
+<input onclick="addToOverlay()" type="submit" value="Add to overlay" name="ato">     
 </div>
         
 
@@ -57,11 +71,9 @@
   -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
-  <script src="../app.js"></script>
+  
+
   <script src="view1.js"></script>
-  <script src="../ListOverlay/view2.js"></script>
-  <script src="../components/version/version.js"></script>
-  <script src="../components/version/version-directive.js"></script>
-  <script src="../components/version/interpolate-filter.js"></script>
+ 
 </body>
 </html>

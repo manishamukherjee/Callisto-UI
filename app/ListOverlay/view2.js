@@ -16,5 +16,6 @@ angular.module('myApp.view2', ['ngRoute'])
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
     $http.get("http://localhost:8000/overlay.php")
-    .then(function (response) {$scope.names = response.data.records;});
+    .then(function (response) {$scope.names = response.data.nodes;});
 });
+
