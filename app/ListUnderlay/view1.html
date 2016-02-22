@@ -16,7 +16,7 @@
    <script type="text/javascript" src="../TopologyUnderlay/jquery-2.1.4.min.js"></script>
   
 </head>
-<body>
+<body ng-app="myApp" >
   <ul class="menu">
     <li><a href="http://localhost:8000/app/ListUnderlay/view1.html">Refresh</a></li>
     <li><a href="http://localhost:8000/app/ListOverlay/view2.html">Overlay</a></li>
@@ -34,7 +34,7 @@
 
   
   
- <div ng-app="myApp" ng-controller="customersCtrl"> 
+ <div ng-controller="customersCtrl"> 
 
 <table id="dataTable">
   <tr>
@@ -60,9 +60,9 @@
 
 </div>
 &nbsp; 
-<div>
+<div ng-controller="customersCtrl2">
    
-<input onclick="addToOverlay()" type="submit" value="Add to overlay" name="ato">     
+<input ng-click="addToOverlay()" type="submit" value="Add to overlay" name="ato">     
 </div>
         
 
